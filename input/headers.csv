@@ -1,0 +1,6 @@
+"TO KEEP IN MIND: COPY THE VARIABLE NAMES IN YOUR DATA STARTING FROM THE THIRD ROW, THE SECOND ROW WILL CONTAIN THE NAME OF EACH LIST OF VARIABLES. FOR EXAMPLE HERE WE HAVE 4 GROUPS: NURSE,PROTECTION,REHAB AND PSS",,,
+Nurse,Protection,Rehab,PSS
+nurse_assessement_date,protection_assessement_date,rehab_assessement_date,pss_assessement_date
+nurse_followup_1,protection_followup_1,rehab_followup_1,pss_followup_1
+nurse_followup_2,protection_followup_2,rehab_followup_2,pss_followup_2
+nurse_followup_3,,rehab_followup_3,

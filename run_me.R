@@ -1,0 +1,54 @@
+if(!("rstudioapi" %in% installed.packages()[,"Package"])){install.packages("rstudioapi")};require("rstudioapi")
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+getwd()
+
+source("./internal/run_master.R")
+
+########################
+########################
+# PARAMETERS
+########################
+########################
+
+parameters<-list()
+
+
+# meta
+#######################
+
+# write the month of interest
+parameters$name<- "test" 
+
+# WHERE IS THE DATA, AND WHAT ARE THE NAMES OF THE RELEVANT headers?
+parameters$data_file<-"./input/data.csv"
+parameters$name_headers<-"./input/headers.csv"
+
+# SET the start and end date. Date format should be "yyyy-mm-dd"
+########################
+
+parameters$start_date <- "2018-06-01"
+parameters$end_date <-"2018-12-31"
+
+########################      
+# WHAT ANALYSIS NEEDED?
+########################        
+
+
+# global aggregates?
+parameters$do_global_counts<-T
+
+
+# local aggregates?
+
+parameters$do_disaggregated_counts<- T
+parameters$do_disaggregated_percent<-F
+parameters$disaggregate_by<-"camp_name"
+
+
+########################
+########################
+# let's go!
+########################
+#######################
+
+run(parameters)
