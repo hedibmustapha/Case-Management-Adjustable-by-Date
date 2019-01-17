@@ -6,9 +6,10 @@ lists_init <- function(data, names) {
   for(i in 1:length(names)){
     vector <- as.character(names[,i])
     vector <- vector[!is.na(vector)]
+    if(length(vector)>0){
     for(j in 1:length(vector)){
       small_list[[j]] <- data[, vector[j]]
-    }
+    }}
     big_list[[i]] <- small_list
   }
   return(big_list)
