@@ -21,7 +21,7 @@ parameters$name<- "test"
 
 # WHERE IS THE DATA, AND WHAT ARE THE NAMES OF THE RELEVANT headers?
 parameters$data_file<-"./input/data.csv"
-parameters$name_headers<-"./input/headers.csv"
+parameters$name_headers<-"./input/variables.csv"
 
 # SET the start and end date.
 ########################
