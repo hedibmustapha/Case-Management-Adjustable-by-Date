@@ -1,6 +1,6 @@
 if(!("rstudioapi" %in% installed.packages()[,"Package"])){install.packages("rstudioapi")};require("rstudioapi")
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
-getwd()
+
 
 source("./internal/run_master.R")
 
@@ -16,14 +16,14 @@ parameters<-list()
 # meta
 #######################
 
-# write the month of interest
+# name your project
 parameters$name<- "test" 
 
 # WHERE IS THE DATA, AND WHAT ARE THE NAMES OF THE RELEVANT headers?
 parameters$data_file<-"./input/data.csv"
 parameters$name_headers<-"./input/headers.csv"
 
-# SET the start and end date. Date format should be "yyyy-mm-dd"
+# SET the start and end date.
 ########################
 
 parameters$start_date <- "2018-06-01"
