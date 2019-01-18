@@ -1,10 +1,10 @@
 # Introduction
 
-`Case Management Adjustable by Date` is a small R project designed for use with case management beneficiary datasets. Specifically it is designed to automate the analysis for the most commonly requested figures in a specified period of time (adjustable).
+`Case-Management-Adjustable-by-Date` is a small R project designed for use with case management beneficiary datasets. Specifically it is designed to automate the analysis for the most commonly requested figures in a specified period of time (adjustable).
 
-`Case Management Adjustable by Date` is built to help user deal with date format data and do quick monitoring and simple analysis.
+`Case-Management-Adjustable-by-Date` is built to help user deal with date format data and do quick monitoring and simple analysis.
 
-`Case Management Adjustable by Date` project allows to:
+`Case-Management-Adjustable-by-Date` project allows to:
 
 - calculate number of beneficiaries reached with services (by service type) in  specified period of time
 
@@ -14,11 +14,11 @@
 
 **For each of the above four indicators, it is possible to disaggregate by any other variable of your choosing in your dataset (age group, gender, location, etc.).**
 
-# Case Management Adjustable by Date walk through
+# Case-Management-Adjustable-by-Date walk through
 
 ## Prerequisite
 
-To be able to use `Case Management Adjustable by Date` you will need:
+To be able to use `Case-Management-Adjustable-by-Date` you will need:
 
 - R: download here: (https://cran.rstudio.com/). 
 
