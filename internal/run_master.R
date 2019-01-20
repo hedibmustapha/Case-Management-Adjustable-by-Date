@@ -63,7 +63,7 @@ run<-function(parameters){
   if(parameters$do_global_counts){
   names(bnf_visit)<-csv_names
   rownames(bnf_visit)<-c("# beneficiaries", "# visits")
-  write.csv(bnf_visit, paste0("./output/global_bnf_visits_",parameters$name,".csv"))
+  write.csv(bnf_visit, paste0("./output/global_numbers_",parameters$name,".csv"))
   }
   cat("script execution is finished see the folder output for results.\n")
 }
