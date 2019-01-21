@@ -27,7 +27,7 @@ set_interval <- function(start_date, end_date){
 # Function that returns a list. Converts non date format variables to adequate date format
 convert_to_date <- function(list_parameters){
   for(i in 1: length(list_parameters)){
-    list_parameters[[i]] <- ymd(list_parameters[[i]])
+    list_parameters[[i]] <- dmy(list_parameters[[i]])
   }
   return(list_parameters)
 }
