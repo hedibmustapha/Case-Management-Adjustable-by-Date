@@ -64,6 +64,21 @@ After initializing all the parameters source the script, wait until the end of t
 - lubridate
 - rstudioapi
 
+## Troubleshooting
+This project won't clean the data for you. 
+
+Please make sure your data is in a date format (example dd/mm/yyyy)
+
+If you get parsing error, check your date format and then edit the function `convert_to_date()` in **internal_functions.R** in the internal folder.
+
+- dmy() = dd/mm/yyyy
+- mdy() = mm/dd/yyyy
+- ymd() = yyyy/mm/dd 
+
+    ....
+    
+    ....
+
 ## Contact
 **hedi.benmustapha@msb.tn**
 
