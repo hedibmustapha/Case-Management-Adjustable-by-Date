@@ -1,3 +1,6 @@
+#Remove Nas in a list
+na.omit.list <- function(y) { return(y[!sapply(y, function(x) all(is.na(x)))]) }
+
 # Initialization of lists
 
 lists_init <- function(data, names) {
@@ -6,11 +9,12 @@ lists_init <- function(data, names) {
   for(i in 1:length(names)){
     vector <- as.character(names[,i])
     vector <- vector[!is.na(vector)]
-    if(length(vector)>0){
     for(j in 1:length(vector)){
       small_list[[j]] <- data[, vector[j]]
-    }}
+    }
+    small_list <- na.omit.list(small_list)
     big_list[[i]] <- small_list
+    small_list <- list()
   }
   return(big_list)
 }
@@ -23,7 +27,7 @@ set_interval <- function(start_date, end_date){
 # Function that returns a list. Converts non date format variables to adequate date format
 convert_to_date <- function(list_parameters){
   for(i in 1: length(list_parameters)){
-    list_parameters[[i]] <- as.Date(list_parameters[[i]],"%d/%m/%Y")
+    list_parameters[[i]] <- ymd(list_parameters[[i]])
   }
   return(list_parameters)
 }
