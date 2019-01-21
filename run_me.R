@@ -41,7 +41,7 @@ parameters$do_global_counts<-T
 # local aggregates?
 
 parameters$do_disaggregated_counts<- T
-parameters$do_disaggregated_percent<-F
+parameters$do_disaggregated_percent<-T
 parameters$disaggregate_by<-"camp_name"
 
 
