@@ -21,8 +21,24 @@ run<-function(parameters){
     stop(paste("data file csv file not found in path",paramters$data_file))
   }
   
+    file <- "report.html"
+    file = file.path(getwd(), file)
+    cat("\n", file = file,
+        append = FALSE)
+    HTML.title(paste(parameters$name,"output"),file = file)
+    HTMLhr(file = file)
+    HTML.title("General Information", file = file)
+    HTMLhr(file = file)
+    HTML(paste("number of observations in the data is :", nrow(data)), file = file)
+    HTML(paste("the time period is : from", parameters$start_date, "to ", parameters$end_date), file = file)
+    if(parameters$do_global_counts){
+      HTML(paste("Do global counts :", parameters$do_global_counts), file = file)
+    }
+    if(parameters$do_disaggregated_counts){
+      HTML(paste("Local analysis  :", parameters$do_disaggregated_counts, " disaggregated by :", parameters$disaggregate_by), file = file)
+    }
+    
   data<-read.csv(parameters$data_file)
-  
   headers<-read.csv(parameters$name_headers, skip = 1, header = T, na.strings = "" )
   csv_names <- names(headers)
   bnf_visit <-data.frame()
@@ -52,6 +68,8 @@ run<-function(parameters){
   colnames(result_aggregate_visits)[2]<-"# visits"
   mergedData <- merge(result_aggregate_visits,result_aggregate_bnf, by.y=c("Var2"), by.x=c("Grouped by"))
   write.csv(mergedData, paste0("./output/",csv_names[i],"_",parameters$name,".csv"))
+  HTML.title(paste("Local Analysis of :", csv_names[i]), file = file)
+  HTML(mergedData, file = file)
   }
   if(parameters$do_disaggregated_percent){
     result_aggregate_bnf_percent <- analyse_bnf_grouped_by_percentage(data,create_bnf_visits,parameters$disaggregate_by)
@@ -59,6 +77,7 @@ run<-function(parameters){
     result_aggregate_bnf_percent <- result_aggregate_bnf_percent[,-1]
     colnames(result_aggregate_bnf_percent)[1]<-"Grouped by"
     write.csv(result_aggregate_bnf_percent, paste0("./output/",csv_names[i],"_percent_",parameters$name,".csv"))
+    HTML(result_aggregate_bnf_percent, file = file)
   }
   
   }
@@ -67,37 +86,11 @@ run<-function(parameters){
   names(bnf_visit)<-csv_names
   rownames(bnf_visit)<-c("# beneficiaries", "# visits")
   write.csv(bnf_visit, paste0("./output/global_numbers_",parameters$name,".csv"))
+  HTML.title("Global Analysis:", file = file)
+  HTML(bnf_visit, file = file)
   }
-    file <- "report.html"
-    file = file.path(getwd(), file)
-    cat("\n", file = file,
-        append = FALSE)
-    HTML.title(paste(parameters$name,"output"),file = file)
-    HTMLhr(file = file)
-    HTML.title("General Information", file = file)
-    HTMLhr(file = file)
-    HTML(paste("number of observations in the data is :", nrow(data)), file = file)
-    HTML(paste("the time period is : from", parameters$start_date, "to ", parameters$end_date), file = file)
-    if(parameters$do_global_counts){
-      HTML(paste("Do global counts :", parameters$do_global_counts), file = file)
-    }
-    if(parameters$do_disaggregated_counts){
-      HTML(paste("Local analysis  :", parameters$do_disaggregated_counts, " disaggregated by :", parameters$disaggregate_by), file = file)
-    }
-    if(parameters$do_global_counts){
-      HTML(bnf_visit, file = file)
-    }
-    if(parameters$do_disaggregated_counts){
-      HTML(mergedData, file = file)
-    }
-    if(parameters$do_disaggregated_counts){
-      HTML(result_aggregate_bnf_percent, file = file)
-    }
-    HTMLhr(file = file)
+  cat(paste("Report written: ", file, sep = ""))
     
-    cat(paste("Report written: ",
-              file, sep = ""))
-  
   cat("script execution is finished see the folder output for results.\n")
   browseURL(file)
 }
